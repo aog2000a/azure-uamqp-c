@@ -18,6 +18,7 @@ include (CTest)
 option(run_e2e_tests "set run_e2e_tests to ON to run e2e tests (default is OFF) [if possible, they are always build]" OFF)
 option(run_longhaul_tests "set run_longhaul_tests to ON to run longhaul tests (default is OFF)[if possible, they are always build]" OFF)
 option(skip_unittests "set skip_unittests to ON to skip unittests (default is OFF)[if possible, they are always build]" OFF)
+option(skip_samples_and_tools "set skip_samples_and_tools to ON to skip building samples and tools (default is OFF, samples and tests are built)" OFF)
 option(leak_detection "set leak_detection to ON (default is OFF)" OFF)
 option(compileOption_C "passes a string to the command line of the C compiler" OFF)
 option(compileOption_CXX "passes a string to the command line of the C++ compiler" OFF)
@@ -192,7 +193,9 @@ add_library(uamqp
     ${socketlistener_c_files}
     )
 
-add_subdirectory(samples)
+if(NOT ${skip_samples_and_tools})
+	add_subdirectory(samples)
+endif()
 if (NOT ${skip_unittests})
     add_subdirectory(tests)
 endif()
