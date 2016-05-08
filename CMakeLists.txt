@@ -34,6 +34,10 @@ else()
     option(use_wolfssl "set use_wolfssl to ON if wolfssl is to be used, set to OFF to not use wolfssl" OFF)
 endif()
 
+# Start of variables used during install
+set (INCLUDE_INSTALL_DIR "include" CACHE PATH "Include file directory")
+set (LIB_INSTALL_DIR "lib" CACHE PATH "Library object file directory")
+
 #Use solution folders. 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
